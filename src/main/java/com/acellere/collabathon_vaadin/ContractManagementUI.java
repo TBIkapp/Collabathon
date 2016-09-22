@@ -6,20 +6,19 @@ import java.util.Vector;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.data.util.filter.SimpleStringFilter;
 import com.vaadin.shared.ui.MarginInfo;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.Grid.HeaderCell;
 import com.vaadin.ui.Grid.HeaderRow;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.PopupView;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.TreeTable;
 import com.vaadin.ui.VerticalLayout;
 
 public class ContractManagementUI {
 
 	private static List<Contract> contracts = new Vector<Contract>();
 	private static BeanItemContainer<Contract> contractContainer;
-	private static PopupView addNewContractPopup;
-	private static VerticalLayout popupLayout;
 
 	public ContractManagementUI() {
 	}
@@ -35,30 +34,31 @@ public class ContractManagementUI {
 		VerticalLayout layouth1 = new VerticalLayout();
 		layouth1.setWidth("100%");
 
-//		popupLayout = new VerticalLayout();
-//		popupLayout.setWidth("400px");
-//
-//		addNewContractPopup = new PopupView(null, createPopupForm());
-//		addNewContractPopup.setPopupVisible(false);
-//		addNewContractPopup.setWidth("500px");
-//
-//		Button button = new Button("+", click -> addNewContractPopup.setPopupVisible(true));
-//
-//		addNewContractPopup.addPopupVisibilityListener(event -> {
-//			if (event.isPopupVisible()) {
-//				popupLayout.removeAllComponents();
-//				popupLayout.addComponent(createPopupForm());
-//			}
-//		});
-//
-//		layouth1.addComponents(button, addNewContractPopup);
-//		layouth1.setComponentAlignment(button, Alignment.TOP_RIGHT);
-//		layouth1.setComponentAlignment(addNewContractPopup, Alignment.MIDDLE_CENTER);
+		layouth1.addComponent(createTableTree());
 		layouth1.addComponent(createContractGrid());
 
 		layout.addComponent(layouth1);
 
 		return layout;
+	}
+
+	private static Component createTableTree() {
+		TreeTable ttable = new TreeTable("Contracts");
+		ttable.setWidth("100%");
+		ttable.addContainerProperty("Category", String.class, null);
+		ttable.addContainerProperty("Amount", Double.class, null);
+
+		Utils.setTTableContent(ttable);
+
+		for (Object itemId : ttable.getContainerDataSource().getItemIds()) {
+			ttable.setCollapsed(itemId, false);
+
+			// As we're at it, also disallow children from
+			// the current leaves
+			if (!ttable.hasChildren(itemId))
+				ttable.setChildrenAllowed(itemId, false);
+		}
+		return ttable;
 	}
 
 	private static Grid createContractGrid() {
@@ -93,44 +93,45 @@ public class ContractManagementUI {
 		return grid;
 	}
 
-//	private static FormLayout createPopupForm() {
-//		FormLayout popupForm = new FormLayout();
-//		popupForm.setWidth("400px");
-//		
-//		TextField tfName = new TextField("Contract Name");
-//		tfName.setIcon(FontAwesome.USER);
-//		tfName.setRequired(true);
-//		tfName.addValidator(new NullValidator("Must be given", false));
-//		popupForm.addComponent(tfName);
-//
-//		TextField tfNumber = new TextField("Contract ID");
-//		tfNumber.setIcon(FontAwesome.BARCODE);
-//		popupForm.addComponent(tfNumber);
-//
-//		TextField tfDescription = new TextField("Description");
-//		tfDescription.setIcon(FontAwesome.ENVELOPE);
-//		popupForm.addComponent(tfDescription);
-//
-//		TextField tfKeyWords = new TextField("Search Key Words");
-//		tfKeyWords.setIcon(FontAwesome.KEYBOARD_O);
-//		popupForm.addComponent(tfKeyWords);
-//
-//		Button btnAddContract = new Button("Add Contract");
-//		btnAddContract.addClickListener(new ClickListener() {
-//
-//			/**
-//			 * 
-//			 */
-//			private static final long serialVersionUID = -9205690656219838892L;
-//
-//			@Override
-//			public void buttonClick(ClickEvent event) {
-//				contractContainer.addBean(new Contract(tfName.getValue(), tfNumber.getValue(), tfKeyWords.getValue(),
-//						tfDescription.getValue()));
-//			}
-//		});
-//		popupForm.addComponent(btnAddContract);
-//		return popupForm;
-//	}
+	// private static FormLayout createPopupForm() {
+	// FormLayout popupForm = new FormLayout();
+	// popupForm.setWidth("400px");
+	//
+	// TextField tfName = new TextField("Contract Name");
+	// tfName.setIcon(FontAwesome.USER);
+	// tfName.setRequired(true);
+	// tfName.addValidator(new NullValidator("Must be given", false));
+	// popupForm.addComponent(tfName);
+	//
+	// TextField tfNumber = new TextField("Contract ID");
+	// tfNumber.setIcon(FontAwesome.BARCODE);
+	// popupForm.addComponent(tfNumber);
+	//
+	// TextField tfDescription = new TextField("Description");
+	// tfDescription.setIcon(FontAwesome.ENVELOPE);
+	// popupForm.addComponent(tfDescription);
+	//
+	// TextField tfKeyWords = new TextField("Search Key Words");
+	// tfKeyWords.setIcon(FontAwesome.KEYBOARD_O);
+	// popupForm.addComponent(tfKeyWords);
+	//
+	// Button btnAddContract = new Button("Add Contract");
+	// btnAddContract.addClickListener(new ClickListener() {
+	//
+	// /**
+	// *
+	// */
+	// private static final long serialVersionUID = -9205690656219838892L;
+	//
+	// @Override
+	// public void buttonClick(ClickEvent event) {
+	// contractContainer.addBean(new Contract(tfName.getValue(),
+	// tfNumber.getValue(), tfKeyWords.getValue(),
+	// tfDescription.getValue()));
+	// }
+	// });
+	// popupForm.addComponent(btnAddContract);
+	// return popupForm;
+	// }
 
 }
