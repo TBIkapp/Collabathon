@@ -16,6 +16,8 @@ import me.figo.models.Account;
 
 public class FigoAccountGrid {
 
+	private static BeanItemContainer<Account> accountContainer;
+
 	public static VerticalLayout getGrid() {
 		VerticalLayout layout = new VerticalLayout();
 		layout.setMargin(new MarginInfo(true, false, false, false));
@@ -24,9 +26,9 @@ public class FigoAccountGrid {
 		grid.setCaption("Figo Accounts");
 		try {
 
-			BeanItemContainer<Account> transactionContainer = new BeanItemContainer<Account>(Account.class,
-					Figo.getSession().getAccounts());
-			grid.setContainerDataSource(transactionContainer);
+			setAccountContainer(new BeanItemContainer<Account>(Account.class,
+					Figo.getSession().getAccounts()));
+			grid.setContainerDataSource(getAccountContainer());
 			grid.setWidth("100%");
 
 			HeaderRow filterRow = grid.appendHeaderRow();
@@ -37,16 +39,16 @@ public class FigoAccountGrid {
 
 				// Have an input field to use for filter
 				TextField filterField = new TextField();
-				filterField.setColumns(8);
+//				filterField.setColumns(8);
 
 				// Update filter When the filter input is changed
 				filterField.addTextChangeListener(change -> {
 					// Can't modify filters so need to replace
-					transactionContainer.removeContainerFilters(pid);
+					getAccountContainer().removeContainerFilters(pid);
 
 					// (Re)create the filter if necessary
 					if (!change.getText().isEmpty())
-						transactionContainer
+						getAccountContainer()
 								.addContainerFilter(new SimpleStringFilter(pid, change.getText(), true, false));
 				});
 				cell.setComponent(filterField);
@@ -58,5 +60,13 @@ public class FigoAccountGrid {
 		}
 		layout.addComponent(grid);
 		return layout;
+	}
+
+	public static BeanItemContainer<Account> getAccountContainer() {
+		return accountContainer;
+	}
+
+	public static void setAccountContainer(BeanItemContainer<Account> accountContainer) {
+		FigoAccountGrid.accountContainer = accountContainer;
 	}
 }

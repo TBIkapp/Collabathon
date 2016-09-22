@@ -43,9 +43,10 @@ public class MyUI extends UI {
 		TabSheet tabsheet = new TabSheet();
 		layout.addComponent(tabsheet);
 		tabsheet.addTab(WelcomePage.getPage(), "Welcome");
-		tabsheet.addTab(FigoAccountGrid.getGrid(), "Accounts");
-		tabsheet.addTab(FigoTransactionGrid.getGrid(), "Transactions");
-		tabsheet.addTab(FigoPaymentGrid.getGrid(), "Payments");
+		tabsheet.addTab(ContractManagementUI.getContractUI(), "Contract Management");
+//		tabsheet.addTab(FigoAccountGrid.getGrid(), "Accounts");
+//		tabsheet.addTab(FigoTransactionGrid.getGrid(), "Transactions");
+//		tabsheet.addTab(FigoPaymentGrid.getGrid(), "Payments");
 		
 		setContent(layout);
 	}

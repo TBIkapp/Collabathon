@@ -16,6 +16,8 @@ import me.figo.models.Transaction;
 
 public class FigoTransactionGrid {
 
+	private static BeanItemContainer<Transaction> transactionContainer;
+
 	public FigoTransactionGrid() {
 
 	}
@@ -28,9 +30,9 @@ public class FigoTransactionGrid {
 		grid.setCaption("Figo Transactions");
 		try {
 
-			BeanItemContainer<Transaction> transactionContainer = new BeanItemContainer<Transaction>(Transaction.class,
-					Figo.getSession().getTransactions());
-			grid.setContainerDataSource(transactionContainer);
+			setTransactionContainer(new BeanItemContainer<Transaction>(Transaction.class,
+					Figo.getSession().getTransactions()));
+			grid.setContainerDataSource(getTransactionContainer());
 			grid.setWidth("100%");
 
 			HeaderRow filterRow = grid.appendHeaderRow();
@@ -41,16 +43,16 @@ public class FigoTransactionGrid {
 
 				// Have an input field to use for filter
 				TextField filterField = new TextField();
-				filterField.setColumns(8);
+//				filterField.setColumns(8);
 
 				// Update filter When the filter input is changed
 				filterField.addTextChangeListener(change -> {
 					// Can't modify filters so need to replace
-					transactionContainer.removeContainerFilters(pid);
+					getTransactionContainer().removeContainerFilters(pid);
 
 					// (Re)create the filter if necessary
 					if (!change.getText().isEmpty())
-						transactionContainer
+						getTransactionContainer()
 								.addContainerFilter(new SimpleStringFilter(pid, change.getText(), true, false));
 				});
 				cell.setComponent(filterField);
@@ -62,5 +64,13 @@ public class FigoTransactionGrid {
 		}
 		layout.addComponent(grid);
 		return layout;
+	}
+
+	public static BeanItemContainer<Transaction> getTransactionContainer() {
+		return transactionContainer;
+	}
+
+	public static void setTransactionContainer(BeanItemContainer<Transaction> transactionContainer) {
+		FigoTransactionGrid.transactionContainer = transactionContainer;
 	}
 }

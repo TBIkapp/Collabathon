@@ -16,6 +16,8 @@ import me.figo.models.Payment;
 
 public class FigoPaymentGrid {
 
+	private static BeanItemContainer<Payment> paymentContainer;
+
 	public static VerticalLayout getGrid() {
 		VerticalLayout layout = new VerticalLayout();
 		layout.setMargin(new MarginInfo(true, false, false, false));
@@ -24,9 +26,9 @@ public class FigoPaymentGrid {
 		grid.setCaption("Figo Payments");
 		try {
 
-			BeanItemContainer<Payment> transactionContainer = new BeanItemContainer<Payment>(Payment.class,
-					Figo.getSession().getPayments());
-			grid.setContainerDataSource(transactionContainer);
+			setPaymentContainer(new BeanItemContainer<Payment>(Payment.class,
+					Figo.getSession().getPayments()));
+			grid.setContainerDataSource(getPaymentContainer());
 			grid.setWidth("100%");
 
 			HeaderRow filterRow = grid.appendHeaderRow();
@@ -37,16 +39,16 @@ public class FigoPaymentGrid {
 
 				// Have an input field to use for filter
 				TextField filterField = new TextField();
-				filterField.setColumns(8);
+//				filterField.setColumns(8);
 
 				// Update filter When the filter input is changed
 				filterField.addTextChangeListener(change -> {
 					// Can't modify filters so need to replace
-					transactionContainer.removeContainerFilters(pid);
+					getPaymentContainer().removeContainerFilters(pid);
 
 					// (Re)create the filter if necessary
 					if (!change.getText().isEmpty())
-						transactionContainer
+						getPaymentContainer()
 								.addContainerFilter(new SimpleStringFilter(pid, change.getText(), true, false));
 				});
 				cell.setComponent(filterField);
@@ -58,6 +60,14 @@ public class FigoPaymentGrid {
 		}
 		layout.addComponent(grid);
 		return layout;
+	}
+
+	public static BeanItemContainer<Payment> getPaymentContainer() {
+		return paymentContainer;
+	}
+
+	public static void setPaymentContainer(BeanItemContainer<Payment> paymentContainer) {
+		FigoPaymentGrid.paymentContainer = paymentContainer;
 	}
 	
 }
