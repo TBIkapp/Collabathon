@@ -44,7 +44,6 @@ public class ContractManagementUI {
 
 		popupLayout = new VerticalLayout();
 		popupLayout.setWidth("400px");
-		
 
 		addNewContractPopup = new PopupView(null, createPopupForm());
 		addNewContractPopup.setPopupVisible(false);
@@ -103,6 +102,8 @@ public class ContractManagementUI {
 
 	private static FormLayout createPopupForm() {
 		FormLayout popupForm = new FormLayout();
+		popupForm.setWidth("400px");
+		
 		TextField tfName = new TextField("Contract Name");
 		tfName.setIcon(FontAwesome.USER);
 		tfName.setRequired(true);
