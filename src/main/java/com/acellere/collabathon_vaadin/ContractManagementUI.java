@@ -26,7 +26,7 @@ public class ContractManagementUI {
 	private static List<Contract> contracts = new Vector<Contract>();
 	private static BeanItemContainer<Contract> contractContainer;
 	private static PopupView addNewContractPopup;
-	private static FormLayout popupform;
+	private static VerticalLayout popupLayout;
 
 	public ContractManagementUI() {
 	}
@@ -42,19 +42,20 @@ public class ContractManagementUI {
 		VerticalLayout layouth1 = new VerticalLayout();
 		layouth1.setWidth("100%");
 
-		popupform = new FormLayout();
-		popupform.setWidthUndefined();
+		popupLayout = new VerticalLayout();
+		popupLayout.setWidth("400px");
+		
 
-		addNewContractPopup = new PopupView(null, createForm());
-		// addNewContractPopup.setPopupVisible(true);
+		addNewContractPopup = new PopupView(null, createPopupForm());
+		addNewContractPopup.setPopupVisible(false);
+		addNewContractPopup.setWidth("500px");
 
-		Button button = new Button("+", click -> // Java 8
-		addNewContractPopup.setPopupVisible(true));
+		Button button = new Button("+", click -> addNewContractPopup.setPopupVisible(true));
 
 		addNewContractPopup.addPopupVisibilityListener(event -> {
 			if (event.isPopupVisible()) {
-				popupform.removeAllComponents();
-				popupform.addComponent(createForm());
+				popupLayout.removeAllComponents();
+				popupLayout.addComponent(createPopupForm());
 			}
 		});
 
@@ -100,24 +101,25 @@ public class ContractManagementUI {
 		return grid;
 	}
 
-	private static FormLayout createForm() {
+	private static FormLayout createPopupForm() {
+		FormLayout popupForm = new FormLayout();
 		TextField tfName = new TextField("Contract Name");
 		tfName.setIcon(FontAwesome.USER);
 		tfName.setRequired(true);
 		tfName.addValidator(new NullValidator("Must be given", false));
-		popupform.addComponent(tfName);
+		popupForm.addComponent(tfName);
 
 		TextField tfNumber = new TextField("Contract ID");
 		tfNumber.setIcon(FontAwesome.BARCODE);
-		popupform.addComponent(tfNumber);
+		popupForm.addComponent(tfNumber);
 
 		TextField tfDescription = new TextField("Description");
 		tfDescription.setIcon(FontAwesome.ENVELOPE);
-		popupform.addComponent(tfDescription);
+		popupForm.addComponent(tfDescription);
 
 		TextField tfKeyWords = new TextField("Search Key Words");
 		tfKeyWords.setIcon(FontAwesome.KEYBOARD_O);
-		popupform.addComponent(tfKeyWords);
+		popupForm.addComponent(tfKeyWords);
 
 		Button btnAddContract = new Button("Add Contract");
 		btnAddContract.addClickListener(new ClickListener() {
@@ -133,8 +135,8 @@ public class ContractManagementUI {
 						tfDescription.getValue()));
 			}
 		});
-		popupform.addComponent(btnAddContract);
-		return popupform;
+		popupForm.addComponent(btnAddContract);
+		return popupForm;
 	}
 
 }
