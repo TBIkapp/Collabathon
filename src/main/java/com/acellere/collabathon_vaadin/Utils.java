@@ -7,11 +7,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import com.vaadin.ui.TreeTable;
 
-import me.figo.FigoSession;
 import me.figo.models.Transaction;
 
 public class Utils {
