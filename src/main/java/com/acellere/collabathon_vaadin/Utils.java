@@ -1,39 +1,22 @@
 package com.acellere.collabathon_vaadin;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 public class Utils {
 
-	public static void main(String[] args) {
-		Utils utils = new Utils();
+	public static Map<String, Collection<String>> getCategories() {
+		Map<String, Collection<String>> map = new HashMap<String, Collection<String>>();
+
+		map.put("Versicherung", Arrays.asList("Fidibus", "Techniker Krankenkasse"));
+		map.put("Strom", Arrays.asList("Mainova", "Lichtblick"));
+		map.put("Spenden", Arrays.asList("Greenpeace", "Christoffel Blindenmission"));
+		map.put("Entertainment", Arrays.asList("Unitymedia"));
+		map.put("Telefon", Arrays.asList("Vodafone"));
+		map.put("Mitgliedsbeiträge", Arrays.asList("Corpora Fitness"));
 		
-		System.out.println(utils.getCategories());
-	}
-	
-	public Utils() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Map<String, String> getCategories() {
-		Map<String, String> map = new HashMap<String, String>();//
-		try {
-			Properties properties = new Properties();
-			BufferedInputStream stream = new BufferedInputStream(new FileInputStream("category.properties"));
-			properties.load(stream);
-
-			for (final String name : properties.stringPropertyNames()){
-				map.put(name, properties.getProperty(name));
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 		return map;
 	}
 
