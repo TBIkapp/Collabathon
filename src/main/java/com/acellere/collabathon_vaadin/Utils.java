@@ -75,7 +75,7 @@ public class Utils {
 		
 		if (render) {
 			if (Math.random() > 0.2) {
-			Label label = new Label("<div style='color: green'><b>Save: " + -Math.round(0.1 * value) + "</b></div>");
+			Label label = new Label("<div style='color: green'><b>Save: " + Math.abs(Math.round(0.1 * value)) + "</b></div>");
 			label.setContentMode(ContentMode.HTML);
 			layout.addComponent(label);
 			layout.addComponent(new PopupView(new OffersPopup()));
@@ -95,8 +95,8 @@ public class Utils {
 
 		return new Object[] {
 				name,
-				-sum(transactions),
-				-lastYear,
+				Math.abs(sum(transactions)),
+				Math.abs(lastYear),
 				getComparisionComponent(name.equals("Greenpeace") ? false : renderOffer, lastYear) };
 	}
 	
@@ -133,7 +133,7 @@ public class Utils {
 					ttable.addItem(
 							new Object[] {
 									transaction.getPurposeText(),
-									-transaction.getAmount().doubleValue(),
+									Math.abs(transaction.getAmount().doubleValue()),
 									0.0,
 									getComparisionComponent(false, 0.0)
 							}, tmp * 10000 + k);
