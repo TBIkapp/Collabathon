@@ -1,13 +1,12 @@
 package com.acellere.collabathon_vaadin;
 
-import com.vaadin.ui.Link;
 import com.vaadin.ui.PopupView;
 
 public class Contract {
 	
 	public String name;
 	public String description; 
-	public PopupView link;
+	public PopupView popup;
 	private String canceldate;
 
 	public Contract(String name, String description, PopupView popupView, String canceldate) {
@@ -19,7 +18,7 @@ public class Contract {
 
 	@Override
 	public String toString() {
-		return name + " - " + description + " - " + link;
+		return name + " - " + description + " - " + popup;
 	}
 	public String getName() {
 		return name;
@@ -30,7 +29,7 @@ public class Contract {
 	}
 
 	public PopupView getLink() {
-		return link;
+		return popup;
 	}
 
 	public void setDescription(String description) {
@@ -41,8 +40,8 @@ public class Contract {
 		this.name = name;
 	}
 
-	public void setLink(PopupView link) {
-		this.link = link;
+	public void setLink(PopupView popup) {
+		this.popup = popup;
 	}
 
 	public String getCanceldate() {

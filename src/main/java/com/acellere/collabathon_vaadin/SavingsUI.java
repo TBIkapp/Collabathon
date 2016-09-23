@@ -6,9 +6,9 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.TreeTable;
 import com.vaadin.ui.VerticalLayout;
 
-public class ContractManagementUI {
+public class SavingsUI {
 
-	public ContractManagementUI() {
+	public SavingsUI() {
 	}
 
 	public static VerticalLayout getContractUI() {
@@ -36,6 +36,7 @@ public class ContractManagementUI {
 		ttable.addContainerProperty("Category", String.class, null);
 		ttable.addContainerProperty("Total amount", Double.class, null);
 		ttable.addContainerProperty("Last year", Double.class, null);
+		ttable.addContainerProperty("Comparison", Component.class, null);
 
 		Utils.setTTableContent(ttable);
 
