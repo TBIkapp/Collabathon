@@ -7,7 +7,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Vector;
 
+import com.vaadin.server.ExternalResource;
+import com.vaadin.ui.Link;
 import com.vaadin.ui.TreeTable;
 
 import me.figo.models.Transaction;
@@ -25,6 +28,22 @@ public class Utils {
 		map.put("Mitgliedsbeiträge", Arrays.asList("Corpora Fitness"));
 
 		return map;
+	}
+	
+	public static Vector<Contract> getContracts(){
+		Vector<Contract> contracts = new Vector<Contract>();
+		
+		contracts.add(new Contract( "Fidibus Versicherungen Ag", "Versicherung", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
+		contracts.add(new Contract( "Techniker Krankenkasse", "Versicherung", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
+		contracts.add(new Contract( "Greenpeace", "Spenden", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
+		contracts.add(new Contract( "Christoffel Blindenmission", "Spenden", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
+		contracts.add(new Contract( "Mainova", "Strom", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
+		contracts.add(new Contract( "Lichtblick", "Strom", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
+		contracts.add(new Contract( "Unitymedia", "Entertainment", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
+		contracts.add(new Contract( "Vodafone", "Telefon", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
+		contracts.add(new Contract( "Corpora Fitness", "Mitgliedsbeiträge", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
+		
+		return contracts;
 	}
 
 	private static double sum(List<Transaction> list) {
@@ -50,7 +69,6 @@ public class Utils {
 
 				ttable.addItem(new Object[] { subcategory.getKey(), sum(subcategory.getValue()) }, (i * 10000) + j);
 
-				
 				int tmp = (i * 10000) + j;
 				ttable.setParent(tmp, i);
 				int k = 1;
@@ -66,43 +84,5 @@ public class Utils {
 			i++;
 
 		}
-
-		// ttable.addItem(new Object[] { "Versicherung", new Double(50.0) }, 0);
-		// ttable.addItem(new Object[] { "Fidibus", new Double(30.0) }, 1);
-		// ttable.addItem(new Object[] { "Techniker Krankenkasse", new
-		// Double(20.0) }, 2);
-		// ttable.addItem(new Object[] { "TransactionDescription (Clickable)",
-		// null }, 99);
-		//
-		// ttable.setParent(1, 0);
-		// ttable.setParent(2, 0);
-		// ttable.setParent(99, 2);
-		//
-		// ttable.addItem(new Object[] { "Strom", null }, 3);
-		// ttable.addItem(new Object[] { "Mainova", null }, 4);
-		// ttable.addItem(new Object[] { "Lichtblick", null }, 5);
-		// ttable.setParent(4, 3);
-		// ttable.setParent(5, 3);
-		//
-		// ttable.addItem(new Object[] { "Spenden", null }, 6);
-		// ttable.addItem(new Object[] { "Greenpeace", null }, 7);
-		// ttable.addItem(new Object[] { "Christoffel Blindenmission", null },
-		// 8);
-		// ttable.setParent(7, 6);
-		// ttable.setParent(8, 6);
-		//
-		// ttable.addItem(new Object[] { "Entertainment", null }, 9);
-		// ttable.addItem(new Object[] { "Unitymedia", null }, 10);
-		// ttable.setParent(10, 11);
-		//
-		// ttable.addItem(new Object[] { "Telefon", null }, 11);
-		// ttable.addItem(new Object[] { "Vodafone", null }, 12);
-		// ttable.setParent(11, 12);
-
-		// ttable.addItem(new Object[] { "Mitgliedsbeiträge", null, null }, 13);
-		// ttable.addItem(new Object[] { null, "Corpora Fitness", null }, 14);
-		// ttable.setParent(13, 14);
-
 	}
-
 }

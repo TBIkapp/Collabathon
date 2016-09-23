@@ -1,39 +1,41 @@
 package com.acellere.collabathon_vaadin;
 
+import com.vaadin.ui.Link;
+
 public class Contract {
 	
-	private String category;
-	private String seller; 
-	private Double amount;
+	private String name;
+	private String description; 
+	private Link link;
 
-	public Contract(String category, String seller, Double amount) {
-		this.setCategory(category);
-		this.setSeller(seller);
-		this.setAmount(amount);
+	public Contract(String name, String description, Link link) {
+		this.setName(name);
+		this.setDescription(description);
+		this.setLink(link);
 	}
 
-	public String getSeller() {
-		return seller;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setSeller(String seller) {
-		this.seller = seller;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public String getCategory() {
-		return category;
+	public String getName() {
+		return name;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Double getAmount() {
-		return amount;
+	public Link getLink() {
+		return link;
 	}
 
-	public void setAmount(Double amount) {
-		this.amount = amount;
+	public void setLink(Link link) {
+		this.link = link;
 	}
 
 }
