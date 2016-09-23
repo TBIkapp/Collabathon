@@ -1,6 +1,6 @@
 package com.acellere.collabathon_vaadin;
 
-import com.vaadin.server.ExternalResource;
+import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
@@ -14,14 +14,10 @@ public class OffersPopup implements PopupView.Content {
 
 	private final HorizontalLayout layout;
 
-    final ExternalResource classResource = new ExternalResource(
-            "https://www.dropbox.com/s/mha5n58r8odq6dc/offers.png?raw=1");
-
     public OffersPopup() {
     	Image img = new Image();
-    	img.setSource(classResource);
-    	img.setWidth("60%");
-       	img.setHeight("60%");
+    	img.setSource(new ThemeResource("offers.png"));
+    	img.setHeight("400px");
         layout = new HorizontalLayout(img);
     }
 
