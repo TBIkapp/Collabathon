@@ -18,11 +18,11 @@ public class Utils {
 		Map<String, Collection<String>> map = new HashMap<String, Collection<String>>();
 
 		map.put("Versicherung", Arrays.asList("Fidibus Versicherungen Ag", "Techniker Krankenkasse"));
-		map.put("Strom", Arrays.asList("Mainova", "Lichtblick"));
+		map.put("Strom", Arrays.asList("Mainova Energiedienste Gmbh", "Lichtblick Ag"));
 		map.put("Spenden", Arrays.asList("Greenpeace", "Christoffel Blindenmission"));
-		map.put("Entertainment", Arrays.asList("Unitymedia"));
-		map.put("Telefon", Arrays.asList("Vodafone"));
-		map.put("Mitgliedsbeiträge", Arrays.asList("Corpora Fitness"));
+		map.put("Entertainment", Arrays.asList("United Domains")); // Unitymedia?
+		map.put("Telefon", Arrays.asList("Vodafone Gmbh"));
+		map.put("Mitgliedsbeiträge", Arrays.asList("Corpora Fitness Gmbh& Co.Kg"));
 
 		return map;
 	}
