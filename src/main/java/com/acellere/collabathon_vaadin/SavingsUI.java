@@ -39,14 +39,14 @@ public class SavingsUI {
 
 		Utils.setTTableContent(ttable);
 
-		for (Object itemId : ttable.getContainerDataSource().getItemIds()) {
-			ttable.setCollapsed(itemId, false);
-
-			// As we're at it, also disallow children from
-			// the current leaves
-			if (!ttable.hasChildren(itemId))
-				ttable.setChildrenAllowed(itemId, false);
-		}
+//		for (Object itemId : ttable.getContainerDataSource().getItemIds()) {
+//			ttable.setCollapsed(itemId, false);
+//
+//			// As we're at it, also disallow children from
+//			// the current leaves
+//			if (!ttable.hasChildren(itemId))
+//				ttable.setChildrenAllowed(itemId, false);
+//		}
 		return ttable;
 	}
 }

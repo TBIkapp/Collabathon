@@ -1,24 +1,10 @@
 package com.acellere.collabathon_vaadin;
 
-import java.io.IOException;
-
-import javax.swing.JLabel;
-
-import com.vaadin.data.util.BeanItemContainer;
-import com.vaadin.data.util.filter.SimpleStringFilter;
-import com.vaadin.server.ThemeResource;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Grid;
-import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Grid.HeaderCell;
-import com.vaadin.ui.Grid.HeaderRow;
-
-import me.figo.FigoException;
-import me.figo.models.Account;
 
 public class SaveMoney {
 	

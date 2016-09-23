@@ -35,7 +35,7 @@ public class MyUI extends UI {
 		layout.setMargin(true);
 		layout.setSpacing(true);
 
-		Label h1 = new Label("CapCash - Monitize your Transaction Data");
+		Label h1 = new Label("CapCash");
 		h1.setStyleName("h1");
 		h1.setHeight("10%");
 		layout.addComponent(h1);
@@ -44,7 +44,7 @@ public class MyUI extends UI {
 		layout.addComponent(tabsheet);
 		
 		tabsheet.addTab(WelcomePage.getPage(), "Welcome").setIcon(FontAwesome.BOOKMARK);
-		tabsheet.addTab(SavingsUI.getContractUI(), "Save Money").setIcon(FontAwesome.MONEY);
+		tabsheet.addTab(SavingsUI.getContractUI(), "Save Money").setIcon(FontAwesome.CALCULATOR);
 		tabsheet.addTab(ContractVaultUI.getTable(), "Digital Locker").setIcon(FontAwesome.LOCK);
 
 		tabsheet.addTab(EarnMoney.getGrid(), "Earn Money").setIcon(FontAwesome.MONEY);
