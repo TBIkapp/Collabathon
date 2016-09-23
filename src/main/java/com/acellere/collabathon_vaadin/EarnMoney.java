@@ -11,6 +11,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.PopupView;
+import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
 
 
@@ -18,12 +19,12 @@ public class EarnMoney {
 	public static Component EarnHistoryButton() {
 		Button addButton = new Button("Earn history");
 		HorizontalLayout l2 = new HorizontalLayout();
-		l2.setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
+		l2.setDefaultComponentAlignment(Alignment.MIDDLE_LEFT)	;
 		l2.addComponent(new PopupView(new EarnHistoryPopup()));
 		l2.setWidth("100%");
 		return l2;
 	}
-	
+
 	public static VerticalLayout getGrid() {
 		VerticalLayout layout = new VerticalLayout();
 		layout.setMargin(new MarginInfo(true, false, false, false));
