@@ -17,7 +17,7 @@ public class Utils {
 	public static Map<String, Collection<String>> getCategories() {
 		Map<String, Collection<String>> map = new HashMap<String, Collection<String>>();
 
-		map.put("Versicherung", Arrays.asList("Fidibus", "Techniker Krankenkasse"));
+		map.put("Versicherung", Arrays.asList("Fidibus Versicherungen Ag", "Techniker Krankenkasse"));
 		map.put("Strom", Arrays.asList("Mainova", "Lichtblick"));
 		map.put("Spenden", Arrays.asList("Greenpeace", "Christoffel Blindenmission"));
 		map.put("Entertainment", Arrays.asList("Unitymedia"));

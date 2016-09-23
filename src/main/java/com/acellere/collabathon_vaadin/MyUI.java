@@ -34,7 +34,7 @@ public class MyUI extends UI {
 		layout.setMargin(true);
 		layout.setSpacing(true);
 
-		Label h1 = new Label("Project XYZ");
+		Label h1 = new Label("The Glory 7 - Monitize your Transactions");
 		h1.setStyleName("h1");
 		h1.setHeight("10%");
 		layout.addComponent(h1);
@@ -44,9 +44,13 @@ public class MyUI extends UI {
 		layout.addComponent(tabsheet);
 		tabsheet.addTab(WelcomePage.getPage(), "Welcome");
 		tabsheet.addTab(ContractManagementUI.getContractUI(), "Contract Management");
-		tabsheet.addTab(FigoAccountGrid.getGrid(), "Accounts");
-		tabsheet.addTab(FigoTransactionGrid.getGrid(), "Transactions");
-		tabsheet.addTab(FigoPaymentGrid.getGrid(), "Payments");
+		tabsheet.addTab(ContractVaultUI.getContractUI(), "Contract Vault");
+		
+		
+		
+//		tabsheet.addTab(FigoAccountGrid.getGrid(), "Accounts");
+//		tabsheet.addTab(FigoTransactionGrid.getGrid(), "Transactions");
+//		tabsheet.addTab(FigoPaymentGrid.getGrid(), "Payments");
 		
 		setContent(layout);
 	}
