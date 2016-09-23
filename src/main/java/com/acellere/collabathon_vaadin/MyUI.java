@@ -9,6 +9,8 @@ import com.vaadin.server.FontAwesome;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.ui.Alignment;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TabSheet;
@@ -38,16 +40,26 @@ public class MyUI extends UI {
 		layout.setMargin(true);
 		layout.setSpacing(true);
 
-		Image logo = new Image();
-		logo.setSource(new ThemeResource("Logo.png"));
-		logo.setWidth("25%");
-		layout.addComponent(logo);
+		HorizontalLayout hl = new HorizontalLayout();
+		
 		
 		Label h1 = new Label("CapCash");
 		h1.setStyleName("h1");
 		h1.setHeight("10%");
-		layout.addComponent(h1);
+		hl.addComponent(h1);
+	
+		Image logo = new Image();
+		logo.setSource(new ThemeResource("Logo.png"));
+		logo.setWidth("100");
+		hl.addComponent(logo);
 		
+	
+		
+		hl.setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
+		hl.setSizeFull();
+		hl.setComponentAlignment(logo, Alignment.TOP_RIGHT);
+		
+		layout.addComponent(hl);
 		TabSheet tabsheet = new TabSheet();
 		layout.addComponent(tabsheet);
 		
