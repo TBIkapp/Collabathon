@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 
 import com.vaadin.server.ExternalResource;
 import com.vaadin.shared.ui.MarginInfo;
+import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Link;
@@ -73,9 +74,17 @@ public class Utils {
 		layout.setSpacing(true);
 		
 		if (render) {
-			Label label = new Label("Save: " + Math.round(0.1 * value));
+			if (Math.random() > 0.2) {
+			Label label = new Label("<div style='color: green'><b>Save: " + -Math.round(0.1 * value) + "</b></div>");
+			label.setContentMode(ContentMode.HTML);
 			layout.addComponent(label);
 			layout.addComponent(new PopupView(new OffersPopup()));
+			}
+			else {
+				Label label = new Label("You are doing fine!");
+				label.setContentMode(ContentMode.HTML);
+				layout.addComponent(label);				
+			}
 		}
 
 		return layout;
@@ -86,9 +95,9 @@ public class Utils {
 
 		return new Object[] {
 				name,
-				sum(transactions),
-				lastYear,
-				getComparisionComponent(renderOffer, lastYear) };
+				-sum(transactions),
+				-lastYear,
+				getComparisionComponent(name.equals("Greenpeace") ? false : renderOffer, lastYear) };
 	}
 	
 	public static void setTTableContent(TreeTable ttable) {
@@ -96,33 +105,35 @@ public class Utils {
 		Map<String, List<Transaction>> categories = MMUtils.getTransactionsByCategory(MMUtils.getAllTransactions(),
 				getCategories());
 		int i = 1;
-		Iterator<Entry<String, List<Transaction>>> c = categories.entrySet().iterator();
+		Iterator<String> c = categories.keySet().stream().sorted().iterator();
 		while (c.hasNext()) {
-			Entry<String, List<Transaction>> category = c.next();
-			Map<String, List<Transaction>> subcategories = MMUtils.getTransactionsByName(category.getValue());
+			String category = c.next();
+			List<Transaction> transactionsForCategory = categories.get(category);
+			Map<String, List<Transaction>> subcategories = MMUtils.getTransactionsByName(transactionsForCategory);
 
-			ttable.addItem(createItem(category.getKey(), category.getValue(), false), i);
+			ttable.addItem(createItem(category, transactionsForCategory, false), i);
 
-			Iterator<Entry<String, List<Transaction>>> itsub = subcategories.entrySet().iterator();
+			Iterator<String> itsub = subcategories.keySet().stream().sorted().iterator();
 			int j = 0;
 			while (itsub.hasNext()) {
-				Entry<String, List<Transaction>> subcategory = itsub.next();
+				String subcategory = itsub.next();
+				List<Transaction> transactionsForSubCategory = subcategories.get(subcategory);
 
 				ttable.addItem(
 						createItem(
-								subcategory.getKey(),
-								subcategory.getValue(),
+								subcategory,
+								transactionsForSubCategory,
 								true), (i * 10000) + j);
 
 				int tmp = (i * 10000) + j;
 				ttable.setParent(tmp, i);
 				int k = 1;
-				List<Transaction> itdesc = subcategory.getValue();
+				List<Transaction> itdesc = transactionsForSubCategory;
 				for (Transaction transaction : itdesc) {
 					ttable.addItem(
 							new Object[] {
 									transaction.getPurposeText(),
-									transaction.getAmount().doubleValue(),
+									-transaction.getAmount().doubleValue(),
 									0.0,
 									getComparisionComponent(false, 0.0)
 							}, tmp * 10000 + k);
