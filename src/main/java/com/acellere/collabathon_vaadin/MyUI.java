@@ -4,9 +4,12 @@ import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.server.ClassResource;
 import com.vaadin.server.FontAwesome;
+import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.UI;
@@ -35,6 +38,11 @@ public class MyUI extends UI {
 		layout.setMargin(true);
 		layout.setSpacing(true);
 
+		Image logo = new Image();
+		logo.setSource(new ThemeResource("Logo.png"));
+		logo.setWidth("25%");
+		layout.addComponent(logo);
+		
 		Label h1 = new Label("CapCash");
 		h1.setStyleName("h1");
 		h1.setHeight("10%");
