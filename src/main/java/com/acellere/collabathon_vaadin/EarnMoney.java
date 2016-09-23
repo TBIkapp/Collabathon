@@ -24,18 +24,42 @@ public class EarnMoney {
 		l2.setWidth("100%");
 		return l2;
 	}
+	
+	public static Component getTable() {
+		VerticalLayout layout = new VerticalLayout();
+		layout.setMargin(new MarginInfo(true, false, false, false));
+		layout.setSpacing(true);
+
+		Table table = new Table("Your Earn History");
+		table.setWidth("100%");
+
+		// Define two columns for the built-in container
+		table.addContainerProperty("Month", String.class, null);
+		table.addContainerProperty("Amount", String.class, null);
+		table.addContainerProperty("Company paying", String.class, null);
+		table.addItem(new Object[] { "Jan", "5€", "Google" }, 1);
+		table.addItem(new Object[] { "Feb", "10€", "Amazon" }, 2);
+		table.addItem(new Object[] { "Mar", "3€", "Coca-Cola" }, 3);
+		
+		table.setPageLength(3);
+
+		layout.addComponent(table);
+		return layout;
+	}
 
 	public static VerticalLayout getGrid() {
 		VerticalLayout layout = new VerticalLayout();
 		layout.setMargin(new MarginInfo(true, false, false, false));
 		layout.setSpacing(true);
 		
+		HorizontalLayout hl = new HorizontalLayout();
 		Label headline = new Label("Your Data from last 6 months could be worth 40€");
 		headline.setStyleName("h1");
 	
 		
-		layout.addComponent(headline);
-		layout.addComponent(EarnHistoryButton());
+		hl.addComponent(headline);
+		hl.addComponent(EarnHistoryButton());
+		layout.addComponent(hl);
 		
 		HorizontalLayout hl2 = new HorizontalLayout();
 		hl2.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
@@ -44,12 +68,12 @@ public class EarnMoney {
 		hl2.addComponent(new Label("Medium - 10€"));
 		hl2.addComponent(new Label("Hot - 23€"));
 		layout.addComponent(hl2);
-		
+
 		HorizontalLayout hlayout = new HorizontalLayout();
 		hlayout.setSizeFull();
 		hlayout.setSpacing(true);
 		hlayout.setMargin(true);
-		
+
 		String imgRes = "imgLow.jpg";
 		Image imglow = new Image();
 		imglow.setWidth("80%");
@@ -70,34 +94,10 @@ public class EarnMoney {
 		
 		layout.addComponent(hlayout);
 
-		Label lblBrands = new Label("These Brands looking for your data");
-		lblBrands.setStyleName("h1");
-		layout.addComponent(lblBrands);
-		
-		HorizontalLayout hlayout1 = new HorizontalLayout();
-		hlayout1.setSpacing(true);
-		hlayout1.setMargin(true);
-		hlayout1.setSizeFull();
-		
-		imgRes = "coca-cola-05.jpg";
-		Image brand1 = new Image();
-		brand1.setSource(new ThemeResource(imgRes));
-		brand1.setWidth("30%");
-		hlayout1.addComponent(brand1);
+		layout.addComponent(getTable());
 
-		imgRes = "googlelogo_color_284x96dp.png";
-		Image brand2 = new Image();
-		brand2.setSource(new ThemeResource(imgRes));
-		brand2.setWidth("30%");
-		hlayout1.addComponent(brand2);
 		
-		imgRes = "Logo-ERGO-SoMeShare.jpg";
-		Image brand3 = new Image();
-		brand3.setSource(new ThemeResource(imgRes));
-		brand3.setWidth("30%");
-		hlayout1.addComponent(brand3);
-		
-		layout.addComponent(hlayout1);
+		//layout.addComponent(hlayout1);
 		
 		return layout;
 		
