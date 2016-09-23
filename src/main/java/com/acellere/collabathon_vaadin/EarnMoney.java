@@ -25,20 +25,20 @@ public class EarnMoney {
 		
 		String imgRes = "imgLow.jpg";
 		Image imglow = new Image();
-		imglow.setWidth("400px");
+		imglow.setWidth("30%");
 		imglow.setSource(new ThemeResource(imgRes));
 		hlayout.addComponent(imglow);
 		
 		imgRes = "imgMed.jpg";
 		Image imgMed = new Image();
 		imgMed.setSource(new ThemeResource(imgRes));
-		imgMed.setWidth("400px");
+		imgMed.setWidth("30%");
 		hlayout.addComponent(imgMed);
 		
 		imgRes = "imgHot.jpg";
 		Image imgHot = new Image();
 		imgHot.setSource(new ThemeResource(imgRes));
-		imgHot.setWidth("400px");
+		imgHot.setWidth("30%");
 		hlayout.addComponent(imgHot);
 		
 		layout.addComponent(hlayout);
@@ -55,19 +55,19 @@ public class EarnMoney {
 		imgRes = "coca-cola-05.jpg";
 		Image brand1 = new Image();
 		brand1.setSource(new ThemeResource(imgRes));
-		brand1.setWidth("400px");
+		brand1.setWidth("30%");
 		hlayout1.addComponent(brand1);
 
 		imgRes = "googlelogo_color_284x96dp.png";
 		Image brand2 = new Image();
 		brand2.setSource(new ThemeResource(imgRes));
-		brand2.setWidth("400px");
+		brand2.setWidth("30%");
 		hlayout1.addComponent(brand2);
 		
 		imgRes = "Logo-ERGO-SoMeShare.jpg";
 		Image brand3 = new Image();
 		brand3.setSource(new ThemeResource(imgRes));
-		brand3.setWidth("400px");
+		brand3.setWidth("30%");
 		hlayout1.addComponent(brand3);
 		
 		layout.addComponent(hlayout1);

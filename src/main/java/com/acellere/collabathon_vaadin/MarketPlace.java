@@ -1,8 +1,10 @@
 package com.acellere.collabathon_vaadin;
 
+import com.vaadin.server.ThemeResource;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Grid;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 
@@ -26,6 +28,12 @@ public class MarketPlace {
 		layout.addComponent(headline0);
 		layout.setComponentAlignment(headline0, Alignment.TOP_CENTER);
 		layout.addComponent(content0);
+		
+		String imgRes = "marketplace.png";
+		Image imglow = new Image();
+		imglow.setWidth("100%");
+		imglow.setSource(new ThemeResource(imgRes));
+		layout.addComponent(imglow);
 		
 		return layout;
 		
