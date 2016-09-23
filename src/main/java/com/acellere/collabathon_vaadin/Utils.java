@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.PopupView;
 import com.vaadin.ui.Table;
@@ -66,12 +67,14 @@ public class Utils {
 		return sum(list.stream().filter(x -> x.getBookingDate().after(from)));
 	}
 
-	public static Component getComparisionComponent(Boolean render) {
+	public static Component getComparisionComponent(Boolean render, double value) {
 		VerticalLayout layout = new VerticalLayout();
 		layout.setMargin(new MarginInfo(false, false, false, false));
 		layout.setSpacing(true);
 		
 		if (render) {
+			Label label = new Label("Save: " + Math.round(0.1 * value));
+			layout.addComponent(label);
 			layout.addComponent(new PopupView(new OffersPopup()));
 		}
 
@@ -79,11 +82,13 @@ public class Utils {
 	}
 	
 	public static Object[] createItem(String name, List<Transaction> transactions, Boolean renderOffer) {
+		double lastYear = sumFromDate(transactions, (new GregorianCalendar(2014, 1, 1)).getTime());
+
 		return new Object[] {
 				name,
 				sum(transactions),
-				sumFromDate(transactions, (new GregorianCalendar(2014, 1, 1)).getTime()),
-				getComparisionComponent(renderOffer) };
+				lastYear,
+				getComparisionComponent(renderOffer, lastYear) };
 	}
 	
 	public static void setTTableContent(TreeTable ttable) {
@@ -119,7 +124,7 @@ public class Utils {
 									transaction.getPurposeText(),
 									transaction.getAmount().doubleValue(),
 									0.0,
-									getComparisionComponent(false)
+									getComparisionComponent(false, 0.0)
 							}, tmp * 10000 + k);
 					ttable.setParent(tmp * 10000 + k, tmp);
 					k++;
