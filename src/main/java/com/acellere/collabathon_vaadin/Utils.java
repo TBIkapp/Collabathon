@@ -36,15 +36,15 @@ public class Utils {
 	public static Vector<Contract> getContracts(){
 		Vector<Contract> contracts = new Vector<Contract>();
 		
-		contracts.add(new Contract( "Fidibus Versicherungen Ag", "Versicherung", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
-		contracts.add(new Contract( "Techniker Krankenkasse", "Versicherung", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
-		contracts.add(new Contract( "Greenpeace", "Spenden", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
-		contracts.add(new Contract( "Christoffel Blindenmission", "Spenden", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
-		contracts.add(new Contract( "Mainova", "Strom", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
-		contracts.add(new Contract( "Lichtblick", "Strom", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
-		contracts.add(new Contract( "United Domains", "Entertainment", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
-		contracts.add(new Contract( "Vodafone Gmbh", "Telefon", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
-		contracts.add(new Contract( "Corpora Fitness Gmbh& Co.Kg", "Mitgliedsbeiträge", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
+		contracts.add(new Contract( "Fidibus Versicherungen Ag", "Versicherung", new Link("Get me an offer!", new ExternalResource("http://check24.de/")), "20.06.2017"));
+		contracts.add(new Contract( "Techniker Krankenkasse", "Versicherung", new Link("Get me an offer!", new ExternalResource("http://check24.de/")), "01.01.2019"));
+		contracts.add(new Contract( "Greenpeace", "Spenden", new Link("Get me an offer!", new ExternalResource("http://check24.de/")), "31.08.2017"));
+		contracts.add(new Contract( "Christoffel Blindenmission", "Spenden", new Link("Get me an offer!", new ExternalResource("http://check24.de/")), "31.08.2017"));
+		contracts.add(new Contract( "Mainova", "Strom", new Link("Get me an offer!", new ExternalResource("http://check24.de/")), "20.06.2017"));
+		contracts.add(new Contract( "Lichtblick", "Strom", new Link("Get me an offer!", new ExternalResource("http://check24.de/")), "10.09.2017"));
+		contracts.add(new Contract( "United Domains", "Entertainment", new Link("Get me an offer!", new ExternalResource("http://check24.de/")), "15.02.2017"));
+		contracts.add(new Contract( "Vodafone Gmbh", "Telefon", new Link("Get me an offer!", new ExternalResource("http://check24.de/")), "20.06.2017"));
+		contracts.add(new Contract( "Corpora Fitness Gmbh& Co.Kg", "Mitgliedsbeiträge", new Link("Get me an offer!", new ExternalResource("http://check24.de/")), "20.06.2017"));
 		
 		return contracts;
 	}

@@ -44,7 +44,7 @@ public class MyUI extends UI {
 		layout.addComponent(tabsheet);
 		tabsheet.addTab(WelcomePage.getPage(), "Welcome");
 		tabsheet.addTab(ContractManagementUI.getContractUI(), "Contract Management");
-		tabsheet.addTab(ContractVaultUI.getContractUI(), "Contract Vault");
+		tabsheet.addTab(ContractVaultUI.getTable(), "Contract Vault");
 		
 		
 		
