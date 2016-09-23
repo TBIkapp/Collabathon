@@ -39,15 +39,15 @@ public class Utils {
 	public static Vector<Contract> getContracts(){
 		Vector<Contract> contracts = new Vector<Contract>();
 		
-		contracts.add(new Contract( "Fidibus Versicherungen Ag", "Versicherung", new PopupView(new OffersPopup()), "20.06.2017"));
-		contracts.add(new Contract( "Techniker Krankenkasse", "Versicherung", new PopupView(new OffersPopup()), "01.01.2019"));
-		contracts.add(new Contract( "Greenpeace", "Spenden", new PopupView(new OffersPopup()), "31.08.2017"));
-		contracts.add(new Contract( "Christoffel Blindenmission", "Spenden", new PopupView(new OffersPopup()), "31.08.2017"));
-		contracts.add(new Contract( "Mainova", "Strom", new PopupView(new OffersPopup()), "20.06.2017"));
-		contracts.add(new Contract( "Lichtblick", "Strom", new PopupView(new OffersPopup()), "10.09.2017"));
-		contracts.add(new Contract( "United Domains", "Entertainment", new PopupView(new OffersPopup()), "15.02.2017"));
-		contracts.add(new Contract( "Vodafone Gmbh", "Telefon", new PopupView(new OffersPopup()), "20.06.2017"));
-		contracts.add(new Contract( "Corpora Fitness Gmbh& Co.Kg", "Mitgliedsbeiträge", new PopupView(new OffersPopup()), "20.06.2017"));
+		contracts.add(new Contract( "Fidibus Versicherungen Ag", "Versicherung", new PopupView(new OffersPopup("Add contract")), "20.06.2017"));
+		contracts.add(new Contract( "Techniker Krankenkasse", "Versicherung", new PopupView(new OffersPopup("Add contract")), "01.01.2019"));
+		contracts.add(new Contract( "Greenpeace", "Spenden", new PopupView(new OffersPopup("Add contract")), "31.08.2017"));
+		contracts.add(new Contract( "Christoffel Blindenmission", "Spenden", new PopupView(new OffersPopup("Add contract")), "31.08.2017"));
+		contracts.add(new Contract( "Mainova", "Strom", new PopupView(new OffersPopup("Add contract")), "20.06.2017"));
+		contracts.add(new Contract( "Lichtblick", "Strom", new PopupView(new OffersPopup("Add contract")), "10.09.2017"));
+		contracts.add(new Contract( "United Domains", "Entertainment", new PopupView(new OffersPopup("Add contract")), "15.02.2017"));
+		contracts.add(new Contract( "Vodafone Gmbh", "Telefon", new PopupView(new OffersPopup("Add contract")), "20.06.2017"));
+		contracts.add(new Contract( "Corpora Fitness Gmbh& Co.Kg", "Mitgliedsbeiträge", new PopupView(new OffersPopup("Add contract")), "20.06.2017"));
 		
 		return contracts;
 	}
@@ -74,7 +74,7 @@ public class Utils {
 			Label label = new Label("<div style='color: green'><b>Save: " + Math.abs(Math.round(0.1 * value)) + "</b></div>");
 			label.setContentMode(ContentMode.HTML);
 			layout.addComponent(label);
-			layout.addComponent(new PopupView(new OffersPopup()));
+			layout.addComponent(new PopupView(new OffersPopup("Get me an offer!")));
 			}
 			else {
 				Label label = new Label("You are doing fine!");

@@ -13,8 +13,10 @@ public class OffersPopup implements PopupView.Content {
 	private static final long serialVersionUID = 1449936688366564999L;
 
 	private final HorizontalLayout layout;
+	private final String title;
 
-    public OffersPopup() {
+    public OffersPopup(String title) {
+    	this.title = title;
     	Image img = new Image();
     	img.setSource(new ThemeResource("offers.png"));
     	img.setHeight("400px");
@@ -28,6 +30,6 @@ public class OffersPopup implements PopupView.Content {
 
     @Override
     public final String getMinimizedValueAsHTML() {
-        return "Get me an offer!";
+        return title;
     }
 }

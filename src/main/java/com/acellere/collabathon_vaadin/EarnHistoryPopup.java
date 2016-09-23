@@ -6,6 +6,7 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Link;
 import com.vaadin.ui.PopupView;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
@@ -35,6 +36,7 @@ public class EarnHistoryPopup implements PopupView.Content {
     	img.setSource(new ThemeResource("brands.png"));
     	img.setHeight("150px");
     	hlayout1.addComponent(img);
+    	
 		/*
 		String imgRes = "coca-cola-05.jpg";
 		Image brand1 = new Image();

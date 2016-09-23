@@ -19,12 +19,6 @@ public class ContractVaultUI {
 		Label content = new Label("Are you scared about searching information in contracts in many different physical folders.We offer you a secure place were you can store all your important contracts and documents and find all relevant information in one place.You will have the opportunity to search through your contracts and documents and to link it with your transactions.");
 		layout.addComponent(content);
 		
-		Button addButton = new Button("Add contract");
-		HorizontalLayout l2 = new HorizontalLayout();
-		l2.setDefaultComponentAlignment(Alignment.MIDDLE_RIGHT);
-		l2.addComponent(addButton);
-		l2.setWidth("100%");
-		layout.addComponent(l2);
 		Table table = new Table("Digital Locker");
 		table.setWidth("100%");
 
