@@ -35,4 +35,9 @@ $v-app-background-color: #fff;
   @include valo;
 
   // Insert your own theme rules here
+  .labelcenter {
+    text-align: center;
+}
+  
+  
 }

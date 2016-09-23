@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Label;
@@ -39,18 +40,15 @@ public class MyUI extends UI {
 		h1.setHeight("10%");
 		layout.addComponent(h1);
 		
-		
 		TabSheet tabsheet = new TabSheet();
 		layout.addComponent(tabsheet);
-		tabsheet.addTab(WelcomePage.getPage(), "Welcome");
-		tabsheet.addTab(SavingsUI.getContractUI(), "Savings");
-		tabsheet.addTab(ContractVaultUI.getTable(), "Contract Vault");
 		
-		
-		
-//		tabsheet.addTab(FigoAccountGrid.getGrid(), "Accounts");
-//		tabsheet.addTab(FigoTransactionGrid.getGrid(), "Transactions");
-//		tabsheet.addTab(FigoPaymentGrid.getGrid(), "Payments");
+		tabsheet.addTab(WelcomePage.getPage(), "Welcome").setIcon(FontAwesome.BOOKMARK);
+		tabsheet.addTab(SavingsUI.getContractUI(), "Save Money").setIcon(FontAwesome.MONEY);
+		tabsheet.addTab(ContractVaultUI.getTable(), "Digital Locker").setIcon(FontAwesome.LOCK);
+
+		tabsheet.addTab(EarnMoney.getGrid(), "Earn Money").setIcon(FontAwesome.MONEY);
+		tabsheet.addTab(MarketPlace.getGrid(), "Marketplace").setIcon(FontAwesome.ROCKET);
 		
 		setContent(layout);
 	}

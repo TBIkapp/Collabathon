@@ -2,6 +2,7 @@ package com.acellere.collabathon_vaadin;
 
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
 
@@ -12,7 +13,10 @@ public class ContractVaultUI {
 		layout.setMargin(new MarginInfo(true, false, false, false));
 		layout.setSpacing(true);
 
-		Table table = new Table("My Contracts");
+		Label content = new Label("Are you scared about searching information in contracts in many different physical folders.We offer you a secure place were you can store all your important contracts and documents and find all relevant information in one place.You will have the opportunity to search through your contracts and documents and to link it with your transactions.");
+		layout.addComponent(content);
+		
+		Table table = new Table("Digital Locker");
 		table.setWidth("100%");
 
 		// Define two columns for the built-in container
