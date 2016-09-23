@@ -20,7 +20,7 @@ public class SavingsUI {
 		headline.setStyleName("h1");
 
 		Label content = new Label(
-				"Do you want to optimize your monthly spending’s on insurances, utility bills or telephone bill? With Glory 7 you are enabled to optimize your spending’s via contract comparison. Using your bank transactions and you will receive a complete analysis of your recurring payments and provide direct feedback listing possible savings and contract improvements It is the easiest way to get a clearly arranged summary of your contracts. Glorious 7 will use its strong algorithms so you have more money you can spend on fun things you really want.");
+				"Do you want to optimize your monthly spending’s on insurances, utility bills or telephone bill? With CapCash you are enabled to optimize your spending’s via contract comparison. Using your bank transactions and you will receive a complete analysis of your recurring payments and provide direct feedback listing possible savings and contract improvements It is the easiest way to get a clearly arranged summary of your contracts. Glorious 7 will use its strong algorithms so you have more money you can spend on fun things you really want.");
 
 		layout.addComponent(headline);
 		layout.addComponent(content);

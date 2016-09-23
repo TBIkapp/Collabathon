@@ -1,7 +1,12 @@
 package com.acellere.collabathon_vaadin;
 
 import com.vaadin.shared.ui.MarginInfo;
-import com.vaadin.ui.*;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.PopupView;
+import com.vaadin.ui.Table;
+import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
 
 public class EarnHistoryPopup implements PopupView.Content {
     private final HorizontalLayout layout;

@@ -78,14 +78,14 @@ public class WelcomePage {
 		label41.setContentMode(ContentMode.HTML);
 		layout.addComponent(label41);
 
-		Label headline4 = new Label("What is our monatisation model?");
-		headline4.setStyleName("h2");
-		layout.addComponent(headline4);
-
-		Label content5 = new Label("Two possibilities to earn money:<br />" + "1. Licensing model to existing banks <br />" + "2. Stand alone company that earn commission outcome <br />"
-				+ "Example <br />" + "- Commission income per referred customer:<br />" + "- Energy provider 20-30 EUR <br />" + "- Phone/ Internet provider 50-100 EUR <br />" + "- Insurance <br />");
-		content5.setContentMode(ContentMode.HTML);
-		layout.addComponent(content5);
+//		Label headline4 = new Label("What is our monatisation model?");
+//		headline4.setStyleName("h2");
+//		layout.addComponent(headline4);
+//
+//		Label content5 = new Label("Two possibilities to earn money:<br />" + "1. Licensing model to existing banks <br />" + "2. Stand alone company that earn commission outcome <br />"
+//				+ "Example <br />" + "- Commission income per referred customer:<br />" + "- Energy provider 20-30 EUR <br />" + "- Phone/ Internet provider 50-100 EUR <br />" + "- Insurance <br />");
+//		content5.setContentMode(ContentMode.HTML);
+//		layout.addComponent(content5);
 
 		layout.setSizeFull();
 
