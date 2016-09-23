@@ -1,7 +1,6 @@
 package com.acellere.collabathon_vaadin;
 
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -43,9 +42,9 @@ public class Utils {
 		contracts.add(new Contract( "Christoffel Blindenmission", "Spenden", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
 		contracts.add(new Contract( "Mainova", "Strom", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
 		contracts.add(new Contract( "Lichtblick", "Strom", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
-		contracts.add(new Contract( "Unitymedia", "Entertainment", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
-		contracts.add(new Contract( "Vodafone", "Telefon", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
-		contracts.add(new Contract( "Corpora Fitness", "Mitgliedsbeiträge", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
+		contracts.add(new Contract( "United Domains", "Entertainment", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
+		contracts.add(new Contract( "Vodafone Gmbh", "Telefon", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
+		contracts.add(new Contract( "Corpora Fitness Gmbh& Co.Kg", "Mitgliedsbeiträge", new Link("Get me an offer!", new ExternalResource("http://check24.de/"))));
 		
 		return contracts;
 	}
