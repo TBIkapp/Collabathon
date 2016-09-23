@@ -35,7 +35,7 @@ public class MyUI extends UI {
 		layout.setMargin(true);
 		layout.setSpacing(true);
 
-		Label h1 = new Label("The Glory 7 - Monitize your Transactions");
+		Label h1 = new Label("CapCash - Monitize your Transaction Data");
 		h1.setStyleName("h1");
 		h1.setHeight("10%");
 		layout.addComponent(h1);

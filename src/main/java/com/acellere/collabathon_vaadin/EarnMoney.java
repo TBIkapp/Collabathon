@@ -16,25 +16,61 @@ public class EarnMoney {
 		Label headline = new Label("Your Data from last 6 months could be worth 40€");
 		headline.setStyleName("h1");
 		
+		layout.addComponent(headline);
+		
 		HorizontalLayout hlayout = new HorizontalLayout();
+		hlayout.setSizeFull();
+		hlayout.setSpacing(true);
+		hlayout.setMargin(true);
+		
 		String imgRes = "imgLow.jpg";
 		Image imglow = new Image();
+		imglow.setWidth("400px");
 		imglow.setSource(new ThemeResource(imgRes));
 		hlayout.addComponent(imglow);
 		
 		imgRes = "imgMed.jpg";
 		Image imgMed = new Image();
-		imglow.setSource(new ThemeResource(imgRes));
+		imgMed.setSource(new ThemeResource(imgRes));
+		imgMed.setWidth("400px");
 		hlayout.addComponent(imgMed);
 		
 		imgRes = "imgHot.jpg";
 		Image imgHot = new Image();
-		imglow.setSource(new ThemeResource(imgRes));
+		imgHot.setSource(new ThemeResource(imgRes));
+		imgHot.setWidth("400px");
 		hlayout.addComponent(imgHot);
 		
 		layout.addComponent(hlayout);
 		
+		Label lblBrands = new Label("These Brands looking for your data");
+		lblBrands.setStyleName("h1");
+		layout.addComponent(lblBrands);
 		
+		HorizontalLayout hlayout1 = new HorizontalLayout();
+		hlayout1.setSpacing(true);
+		hlayout1.setMargin(true);
+		hlayout1.setSizeFull();
+		
+		imgRes = "coca-cola-05.jpg";
+		Image brand1 = new Image();
+		brand1.setSource(new ThemeResource(imgRes));
+		brand1.setWidth("400px");
+		hlayout1.addComponent(brand1);
+
+		imgRes = "googlelogo_color_284x96dp.png";
+		Image brand2 = new Image();
+		brand2.setSource(new ThemeResource(imgRes));
+		brand2.setWidth("400px");
+		hlayout1.addComponent(brand2);
+		
+		imgRes = "Logo-ERGO-SoMeShare.jpg";
+		Image brand3 = new Image();
+		brand3.setSource(new ThemeResource(imgRes));
+		brand3.setWidth("400px");
+		hlayout1.addComponent(brand3);
+		
+		layout.addComponent(hlayout1);
 		
 		return layout;
 		
