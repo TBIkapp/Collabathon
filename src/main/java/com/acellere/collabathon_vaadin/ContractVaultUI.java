@@ -1,14 +1,11 @@
 package com.acellere.collabathon_vaadin;
 
-import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
 
 public class ContractVaultUI {
-
-	private static BeanItemContainer<Contract> contractContainer;
 
 	public static Component getTable() {
 		VerticalLayout layout = new VerticalLayout();
