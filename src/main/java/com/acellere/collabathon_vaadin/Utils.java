@@ -13,9 +13,13 @@ import java.util.Vector;
 import java.util.stream.Stream;
 
 import com.vaadin.server.ExternalResource;
+import com.vaadin.shared.ui.MarginInfo;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.PopupView;
+import com.vaadin.ui.Table;
 import com.vaadin.ui.TreeTable;
+import com.vaadin.ui.VerticalLayout;
 
 import me.figo.models.Transaction;
 
@@ -62,11 +66,24 @@ public class Utils {
 		return sum(list.stream().filter(x -> x.getBookingDate().after(from)));
 	}
 
-	public static Object[] createItem(String name, List<Transaction> transactions) {
+	public static Component getComparisionComponent(Boolean render) {
+		VerticalLayout layout = new VerticalLayout();
+		layout.setMargin(new MarginInfo(false, false, false, false));
+		layout.setSpacing(true);
+		
+		if (render) {
+			layout.addComponent(new PopupView(new OffersPopup()));
+		}
+
+		return layout;
+	}
+	
+	public static Object[] createItem(String name, List<Transaction> transactions, Boolean renderOffer) {
 		return new Object[] {
 				name,
 				sum(transactions),
-				sumFromDate(transactions, (new GregorianCalendar(2014, 1, 1)).getTime()) };
+				sumFromDate(transactions, (new GregorianCalendar(2014, 1, 1)).getTime()),
+				getComparisionComponent(renderOffer) };
 	}
 	
 	public static void setTTableContent(TreeTable ttable) {
@@ -79,7 +96,7 @@ public class Utils {
 			Entry<String, List<Transaction>> category = c.next();
 			Map<String, List<Transaction>> subcategories = MMUtils.getTransactionsByName(category.getValue());
 
-			ttable.addItem(createItem(category.getKey(), category.getValue()), i);
+			ttable.addItem(createItem(category.getKey(), category.getValue(), false), i);
 
 			Iterator<Entry<String, List<Transaction>>> itsub = subcategories.entrySet().iterator();
 			int j = 0;
@@ -89,7 +106,8 @@ public class Utils {
 				ttable.addItem(
 						createItem(
 								subcategory.getKey(),
-								subcategory.getValue()), (i * 10000) + j);
+								subcategory.getValue(),
+								true), (i * 10000) + j);
 
 				int tmp = (i * 10000) + j;
 				ttable.setParent(tmp, i);
@@ -100,7 +118,8 @@ public class Utils {
 							new Object[] {
 									transaction.getPurposeText(),
 									transaction.getAmount().doubleValue(),
-									0.0									
+									0.0,
+									getComparisionComponent(false)
 							}, tmp * 10000 + k);
 					ttable.setParent(tmp * 10000 + k, tmp);
 					k++;

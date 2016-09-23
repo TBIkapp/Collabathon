@@ -15,7 +15,7 @@ public class OffersPopup implements PopupView.Content {
     	img.setSource(classResource);
     	img.setWidth("60%");
        	img.setHeight("60%");
-               layout = new HorizontalLayout(img);
+        layout = new HorizontalLayout(img);
     }
 
     @Override
