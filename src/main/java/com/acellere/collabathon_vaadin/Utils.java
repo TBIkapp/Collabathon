@@ -1,12 +1,16 @@
 package com.acellere.collabathon_vaadin;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Stream;
 
 import com.vaadin.ui.TreeTable;
 
@@ -27,10 +31,25 @@ public class Utils {
 		return map;
 	}
 
-	private static double sum(List<Transaction> list) {
-		return list.stream().mapToDouble(x -> x.getAmount().doubleValue()).sum();
+	private static double sum(Stream<Transaction> stream) {
+		return stream.mapToDouble(x -> x.getAmount().doubleValue()).sum();
 	}
 
+	private static double sum(List<Transaction> list) {
+		return sum(list.stream());
+	}
+
+	private static double sumFromDate(List<Transaction> list, Date from) {
+		return sum(list.stream().filter(x -> x.getBookingDate().after(from)));
+	}
+
+	public static Object[] createItem(String name, List<Transaction> transactions) {
+		return new Object[] {
+				name,
+				sum(transactions),
+				sumFromDate(transactions, (new GregorianCalendar(2014, 1, 1)).getTime()) };
+	}
+	
 	public static void setTTableContent(TreeTable ttable) {
 
 		Map<String, List<Transaction>> categories = MMUtils.getTransactionsByCategory(MMUtils.getAllTransactions(),
@@ -41,14 +60,17 @@ public class Utils {
 			Entry<String, List<Transaction>> category = c.next();
 			Map<String, List<Transaction>> subcategories = MMUtils.getTransactionsByName(category.getValue());
 
-			ttable.addItem(new Object[] { category.getKey(), sum(category.getValue()) }, i);
+			ttable.addItem(createItem(category.getKey(), category.getValue()), i);
 
 			Iterator<Entry<String, List<Transaction>>> itsub = subcategories.entrySet().iterator();
 			int j = 0;
 			while (itsub.hasNext()) {
 				Entry<String, List<Transaction>> subcategory = itsub.next();
 
-				ttable.addItem(new Object[] { subcategory.getKey(), sum(subcategory.getValue()) }, (i * 10000) + j);
+				ttable.addItem(
+						createItem(
+								subcategory.getKey(),
+								subcategory.getValue()), (i * 10000) + j);
 
 				
 				int tmp = (i * 10000) + j;
@@ -56,7 +78,12 @@ public class Utils {
 				int k = 1;
 				List<Transaction> itdesc = subcategory.getValue();
 				for (Transaction transaction : itdesc) {
-					ttable.addItem(new Object[] { transaction.getPurposeText(), transaction.getAmount().doubleValue()}, tmp * 10000 + k);
+					ttable.addItem(
+							new Object[] {
+									transaction.getPurposeText(),
+									transaction.getAmount().doubleValue(),
+									0.0									
+							}, tmp * 10000 + k);
 					ttable.setParent(tmp * 10000 + k, tmp);
 					k++;
 				}

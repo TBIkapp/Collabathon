@@ -34,7 +34,8 @@ public class ContractManagementUI {
 		TreeTable ttable = new TreeTable("Contracts");
 		ttable.setWidth("100%");
 		ttable.addContainerProperty("Category", String.class, null);
-		ttable.addContainerProperty("Amount", Double.class, null);
+		ttable.addContainerProperty("Total amount", Double.class, null);
+		ttable.addContainerProperty("Last year", Double.class, null);
 
 		Utils.setTTableContent(ttable);
 
